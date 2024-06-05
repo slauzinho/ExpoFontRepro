@@ -5,13 +5,15 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  View,
   useColorScheme,
 } from 'react-native';
 
@@ -21,7 +23,7 @@ import Constants from 'expo-constants';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-  const [fontsLoaded, error] = useFonts({
+  const [fontsLoaded] = useFonts({
     BasicSansLight: require('./assets/fonts/basic-sans-light.ttf'),
     BasicSansRegular: require('./assets/fonts/basic-sans-regular.ttf'),
     BasicSansSemiBold: require('./assets/fonts/basic-sans-semibold.ttf'),
@@ -31,7 +33,7 @@ function App(): React.JSX.Element {
     FrauncesLightItalic: require('./assets/fonts/FrauncesLightItalic.ttf'),
   });
 
-  console.log('===============>', fontsLoaded, error);
+  const [isOpen, setIsOpen] = useState(false);
 
   if (!fontsLoaded) {
     return <Text>Loading...</Text>;
@@ -51,7 +53,17 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Text style={styles.title}>Testing title</Text>
+        <Text style={styles.para}>random text </Text>
         <Text style={styles.section}>This is a body text</Text>
+        <Button title="Toggle" onPress={() => setIsOpen(!isOpen)} />
+
+        {isOpen && (
+          <View>
+            <Text style={styles.title}>Testing title</Text>
+            <Text style={styles.para}>random text </Text>
+            <Text style={styles.section}>This is a body text</Text>
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -66,6 +78,11 @@ const styles = StyleSheet.create({
   section: {
     fontFamily: 'BasicSansRegular',
     fontSize: 18,
+    fontWeight: 'normal',
+  },
+  para: {
+    fontFamily: 'FortescueMedian',
+    fontSize: 16,
     fontWeight: 'normal',
   },
 });

@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/FortescueMedian-Italic.ttf",
+      "sha1": "3f27373e5165500ecae89a028111a15f2a475c18"
+    },
+    {
+      "path": "assets/fonts/FortescueMedian.ttf",
+      "sha1": "f74d2ab0a63980dfcc4cafdb1fd274230e81d67a"
+    },
+    {
+      "path": "assets/fonts/FrauncesLight.ttf",
+      "sha1": "222b195a235282567752c6b3e6c658c56574689b"
+    },
+    {
+      "path": "assets/fonts/FrauncesLightItalic.ttf",
+      "sha1": "590ab9b665595d3bac21103ab9e24e2a19a0d001"
+    },
+    {
+      "path": "assets/fonts/basic-sans-light.ttf",
+      "sha1": "3d29daf7bfb8c794218be1e4e01171e62a65f8a1"
+    },
+    {
+      "path": "assets/fonts/basic-sans-regular.ttf",
+      "sha1": "6de7ca8f9276bd60378131809ea6de18c93f73b5"
+    },
+    {
+      "path": "assets/fonts/basic-sans-semibold.ttf",
+      "sha1": "5331e7ede5bedd890acd3716c0b9c4384d971d3b"
+    }
+  ]
+}
