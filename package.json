@@ -10,6 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "expo": "^51.0.0",
+    "expo-font": "~12.0.6",
     "react": "18.2.0",
     "react-native": "0.74.2"
   },

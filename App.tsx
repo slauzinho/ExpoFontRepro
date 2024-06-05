@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -14,49 +13,29 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
-  View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {useFonts} from 'expo-font';
+import Constants from 'expo-constants';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const [fontsLoaded, error] = useFonts({
+    BasicSansLight: require('./assets/fonts/basic-sans-light.ttf'),
+    BasicSansRegular: require('./assets/fonts/basic-sans-regular.ttf'),
+    BasicSansSemiBold: require('./assets/fonts/basic-sans-semibold.ttf'),
+    FortescueMedian: require('./assets/fonts/FortescueMedian.ttf'),
+    FortescueMedianItalic: require('./assets/fonts/FortescueMedian-Italic.ttf'),
+    FrauncesLight: require('./assets/fonts/FrauncesLight.ttf'),
+    FrauncesLightItalic: require('./assets/fonts/FrauncesLightItalic.ttf'),
+  });
+
+  console.log('===============>', fontsLoaded, error);
+
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
+  }
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -71,47 +50,23 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
+        <Text style={styles.title}>Testing title</Text>
+        <Text style={styles.section}>This is a body text</Text>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
+  title: {
+    fontFamily: 'FrauncesLight',
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
-  sectionDescription: {
-    marginTop: 8,
+  section: {
+    fontFamily: 'BasicSansRegular',
     fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+    fontWeight: 'normal',
   },
 });
 
